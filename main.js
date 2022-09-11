@@ -26,7 +26,13 @@ function totalResults() {
     resetBtn(ppl);
 }
 bill.addEventListener("input", totalResults);
+bill.addEventListener("click", () => {
+    bill.value = '';
+});
 ppl.addEventListener("input", totalResults);
+ppl.addEventListener("click", () => {
+    ppl.value = '';
+});
 // Btns %
 function calcBtnPercent() {
     for (let i = 0; i < percents.length; i++) {
