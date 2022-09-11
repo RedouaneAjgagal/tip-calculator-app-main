@@ -91,14 +91,12 @@ function calcCustomInp() {
 function resetBtn(e) {
     if (e.value.length != 0) {
         reset.removeAttribute("disabled");
-        reset.ariaDisabled = "false";
         reset.classList.add("active");
         reset.addEventListener("click", () => {
             bill.value = '';
             custom.value = '';
             ppl.value = '';
             reset.setAttribute('disabled', '');
-            reset.ariaDisabled = "true";
             reset.classList.remove("active");
             amount.innerText = "$0.00";
             total.innerText = "$0.00";
@@ -110,11 +108,9 @@ function resetBtn(e) {
     } else {
         if ((bill.value.trim().length != 0) || (ppl.value.trim().length != 0) || (custom.value.length != 0)) {
             reset.removeAttribute("disabled");
-            reset.ariaDisabled = "false";
             reset.classList.add("active");
         } else {
             reset.setAttribute("disabled", "");
-            reset.ariaDisabled = "true";
             reset.classList.remove("active");
         }
     }
