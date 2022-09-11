@@ -44,7 +44,7 @@
             <div class="ppl">
                 <label for="ppl">Number of People</label>
                 <div>
-                    <input type="number" name="ppl" id="ppl" placeholder="0">
+                    <input type="number" name="ppl" id="ppl" placeholder="0" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57">
                     <img src="./images/icon-person.svg" alt="" aria-hidden="true">
                 </div>
             </div>
