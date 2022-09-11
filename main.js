@@ -36,35 +36,34 @@ ppl.addEventListener("click", () => {
 // Btns %
 function calcBtnPercent() {
     for (let i = 0; i < percents.length; i++) {
+        let matches = percents[i].innerText.match(/(\d+)/);
         let calcBillPlusPpl = bill.value / ppl.value;
-        // Select only the numbers of the text btns
-        const matches = percents[i].innerText.match(/(\d+)/);
-        let btnPercentResults = ((calcBillPlusPpl / 100) * matches[0]).toFixed(2);
-        if (percents[i].classList.contains("active")) {
-            // check if we already selected a btn, so if decided to change the input value still can get results of the last btn we selected 
-            amount.innerText = '$' + Number(btnPercentResults).toFixed(2);
-            total.innerText = '$' + (calcBillPlusPpl + Number(btnPercentResults)).toFixed(2);
-        } else {
-            // What happen when you click for the first time
-            percents[i].addEventListener("click", () => {
-                percents.forEach(btn => {
-                    btn.classList.remove("active");
-                    btn.ariaSelected = "false";
-                });
-                percents[i].classList.add("active");
-                percents[i].ariaSelected = "true";
-                custom.value = '';
-                if ((bill.value.trim().length === 0) || (ppl.value.trim().length === 0) || (ppl.value < 1)) {
-                    amount.innerText = "$0.00";
-                    total.innerText = "$0.00";
-                    percents[i].classList.remove("active");
-                } else {
-                    amount.innerText = '$' + Number(btnPercentResults).toFixed(2);
-                    total.innerText = '$' + (calcBillPlusPpl + Number(btnPercentResults)).toFixed(2);
-                }
+        let btnPercentResults = (calcBillPlusPpl / 100) * matches[0];
+        percents[i].addEventListener("click", () => {
+            percents.forEach(btn => {
+                btn.classList.remove("active");
+                btn.ariaSelected = "false";
             });
+            percents[i].classList.add("active");
+            percents[i].ariaSelected = "true";
+            custom.value = '';
+            if ((bill.value.trim().length === 0) || (ppl.value.trim().length === 0) || (ppl.value < 1)) {
+                // This for the reset button, when its clicked and try to click on each btn this what it wil show
+                amount.innerText = "$0.00";
+                total.innerText = "$0.00";
+                percents[i].classList.remove("active");
+                percents[i].ariaSelected = "false";
+            } else {
+                total.innerText = '$' + (btnPercentResults + calcBillPlusPpl).toFixed(2);
+                amount.innerText = '$' + btnPercentResults.toFixed(2);
+            }
+
+        });
+        // Calc the new inp value based on the selected btn
+        if (percents[i].classList.contains("active")) {
+            total.innerText = '$' + (btnPercentResults + calcBillPlusPpl).toFixed(2);
+            amount.innerText = '$' + btnPercentResults.toFixed(2);
         }
-        
     }
 }
 // Custom
