@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+
+    <!-- Css -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>spli<br>tter</h1>
+    </header>
+    <main>
+        <div class="inputs">
+            <div class="bills">
+                <label for="bills">Bill</label>
+                <div>
+                    <input type="number" name="bills" id="bills" placeholder="0">
+                    <img src="./images/icon-dollar.svg" alt="" aria-hidden="true">
+                </div>
+            </div>
+            <div class="tip">
+                <label for="custom">Select Tip %</label>
+                <div>
+                    <button aria-label="Tip by 5%" class="percent">5%</button>
+                    <button aria-label="Tip by 10%" class="percent">10%</button>
+                    <button aria-label="Tip by 15%" class="percent">15%</button>
+                    <button aria-label="Tip by 25%" class="percent">25%</button>
+                    <button aria-label="Tip by 50%" class="percent">50%</button>
+                    <input aria-label="Custom the percentage" type="number" name="custom" id="custom" placeholder="Custom">
+                </div>
+            </div>
+            <div class="ppl">
+                <label for="ppl">Number of People</label>
+                <div>
+                    <input type="number" name="ppl" id="ppl" placeholder="0" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                    <img src="./images/icon-person.svg" alt="" aria-hidden="true">
+                </div>
+            </div>
+        </div>
+        <div class="outputs">
+            <div class="calc">
+                <div class="tipPerPerson">
+                    <div>
+                        <p>Tip Amount</p>
+                        <span>/ person</span>
+                    </div>
+                    <h2 id="amount" aria-label="Tip amount per person">$0.00</h2>
+                </div>
+                <div class="totalPerPerson">
+                    <div>
+                        <p>Total</p>
+                        <span>/ person</span>
+                    </div>
+                    <h2 id="total" aria-label="Total per person">$0.00</h2>
+                </div>
+            </div>
+            <div class="reset">
+                <button class="resetBtn" disabled aria-disabled="true" id="reset" aria-label="Rest all the calculation to zero">RESET</button>
+            </div>
+        </div>
+    </main>
+    <script src="./main.js"></script>
+</body>
+</html>
